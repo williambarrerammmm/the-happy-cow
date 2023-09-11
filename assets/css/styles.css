@@ -39,6 +39,22 @@ section {
     padding: 40px;
 }
 
+#inicio{
+    background-color: cadetblue;
+}
+
+#productos{
+    background-color: chartreuse;
+}
+
+#nosotros{
+    background-color: aquamarine;
+}
+
+#contacto{
+    background-color: blueviolet;
+}
+
 /* Estilos para productos */
 .producto {
     text-align: center;
@@ -66,7 +82,7 @@ section {
     height: 400px;
 
 }
-rgb(204, 204, 204)
+
 /* Estilos para el pie de página */
 footer {
     background-color: #333;
