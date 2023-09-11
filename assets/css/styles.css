@@ -1,0 +1,76 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #008000;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Estilos para secciones */
+section {
+    padding: 40px;
+}
+
+/* Estilos para productos */
+.producto {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    flex-direction: row;
+
+}
+
+#productos ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+
+
+.producto img {
+    max-width: 100%;
+    width: 300px;
+    height: 400px;
+
+}
+rgb(204, 204, 204)
+/* Estilos para el pie de página */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
