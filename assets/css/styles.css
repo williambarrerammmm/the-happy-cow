@@ -1,92 +1,180 @@
-/* Estilos generales */
+/* Estilos globales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Encabezado */
 header {
-    background-color: #008000;
-    color: #fff;
-    text-align: center;
-    padding: 30px;
+    background-color: #F4F4F4;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #fff;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: darkseagreen;
+    max-height: 300px;
 }
 
 .logo{
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-    display: block;
+    width: 154px;
 }
 
-/* Estilos para secciones */
-section {
-    padding: 40px;
-}
-
-#inicio{
-    background-color: cadetblue;
-}
-
-#productos{
-    background-color: chartreuse;
-}
-
-#nosotros{
-    background-color: aquamarine;
-}
-
-#contacto{
-    background-color: blueviolet;
-}
-
-/* Estilos para productos */
-.producto {
+.title {
+    font-size: 24px;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%;
-    border: 1px solid #ccc;
-    padding: 20px;
-    background-color: #fff;
-    flex-direction: row;
-
 }
 
-#productos ul {
+.nav-links {
     list-style: none;
-    padding: 0;
     display: flex;
 }
 
-
-
-.producto img {
-    max-width: 100%;
-    width: 300px;
-    height: 400px;
-
+.nav-links li {
+    margin-right: 20px;
 }
 
-/* Estilos para el pie de página */
+/* Sección del héroe */
+.hero {
+    background-image: url('/assets/img/holstein-cattle-2318436_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #FFA500;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #FF6600;
+}
+
+/* Sección de productos */
+
+
+.product {
+    margin-bottom: 40px;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    width: 200px;
+    height: 280px;
+}
+
+/* Sección de contacto */
+#contacto {
+    background-color: #F4F4F4;
+    padding: 60px 0;
+    text-align: center;
+}
+
+/* Pie de página */
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
+}
+
+/* Estilos para pantallas más pequeñas (móviles y tablets) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        margin-top: 20px;
+        justify-content: flex-start;
+    }
+
+    .nav-links li {
+        margin-right: 0;
+        margin-bottom: 10px;
+        padding-left: 4px;
+    }
+
+    /* Ajustar estilos del héroe para dispositivos móviles */
+    .hero {
+        padding: 80px 0;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* Ajustar estilos de los productos para dispositivos móviles */
+    .product {
+        margin-bottom: 20px;
+    }
+
+    /* Ajustar estilos de la sección de contacto para dispositivos móviles */
+    #contacto {
+        padding: 40px 0;
+    }
+}
+
+
+/* Añade estilos para disposición horizontal en dispositivos móviles y tablets */
+@media (max-width: 768px) {
+    .product-container {
+        display: flex;
+        flex-direction: row; /* Cambia la dirección de flexión a horizontal */
+        flex-wrap: nowrap; /* Evita el ajuste de los elementos a la siguiente línea */
+        justify-content: flex-start; /* Alinea los elementos a la izquierda */
+        overflow-x: auto; /* Agrega desplazamiento horizontal si los productos no caben en la pantalla */
+    }
+
+    .product {
+        /*flex: 0 0 auto;  Evita que los productos se redimensionen */
+        margin-right: 20px; /* Espacio entre los productos */
+    }
+}
+
+/* Estilos para pantallas más grandes (escritorio) */
+@media (min-width: 769px) {
+    .product-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Permite que los productos se ajusten en líneas adicionales */
+        justify-content: flex-start;
+    }
+
+    .product {
+        flex: 0 0 calc(33.333% - 20px); /* Divide en tres columnas, ajusta el espacio entre los productos */
+        margin-right: 20px;
+    }
+
+    /* Estilo para el último elemento de cada fila para eliminar el margen derecho */
+    .product:nth-child(3n) {
+        margin-right: 0;
+    }
 }
