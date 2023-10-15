@@ -21,12 +21,33 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: darkseagreen;
+    background-color: green;
     max-height: 300px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1); /* Sombra debajo de la barra de navegación */
+}
+
+.navbar .social-media, footer .social-media{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+}
+
+.social-element{
+    margin-right: 4px;
+    transition: transform 0.3s ease;
+    filter: grayscale(100%);
+
+}
+
+.icon-small.social-element:hover {
+    transform: scale(1.1);
 }
 
 .logo{
-    width: 154px;
+    width: 88px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin: 0 auto 0 16px;
 }
 
 .title {
@@ -92,6 +113,12 @@ header {
 .nav-links a {
     text-decoration: none;
     color: #fff;
+    font-weight: bold; /* Texto en negrita en los enlaces */
+    transition: color 0.3s ease; /* Transición suave para el color del texto */
+}
+
+.nav-links a:hover {
+    color: #ff8c00; /* Cambiar color del texto al pasar el mouse sobre el enlace */
 }
 
 /* Sección de contacto */
@@ -134,10 +161,17 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px 0;
+    display: flex;
+    align-items: center;
 }
 
 /* Estilos para pantallas más pequeñas (móviles y tablets) */
 @media (max-width: 768px) {
+
+    .logo{
+        margin: auto;
+    }
+
     .navbar {
         flex-direction: column;
     }
