@@ -1,6 +1,6 @@
 /* Estilos globales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -45,7 +45,7 @@ header {
 
 /* Sección del héroe */
 .hero {
-    background-image: url('../../assets/img/holstein-cattle-2318436_1280.jpg');
+    background-image: url('../../assets/img/holstein-cattle.jpg');
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -85,11 +85,47 @@ header {
     height: 280px;
 }
 
+.product p{
+    text-align: justify;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+}
+
 /* Sección de contacto */
 #contacto {
     background-color: #F4F4F4;
     padding: 60px 0;
     text-align: center;
+}
+
+.social-media{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.social-media a{
+    text-decoration: none;
+    margin-right: 4px;
+}
+
+.icon-small {
+    height: 28px;
+    transition: transform 0.3s ease;
+}
+
+.icon-small:hover {
+    transform: scale(1.5);
+}
+
+.social-media--detail{
+    margin: 0;
+    font-weight: bold;
+    font-size: .9rem;
 }
 
 /* Pie de página */
@@ -157,6 +193,14 @@ footer {
         /*flex: 0 0 auto;  Evita que los productos se redimensionen */
         margin-right: 20px; /* Espacio entre los productos */
     }
+
+    .product img {
+        max-width: 100%;
+        height: auto;
+        width: 95px;
+        height: 95px;
+    }
+    
 }
 
 /* Estilos para pantallas más grandes (escritorio) */
@@ -176,5 +220,10 @@ footer {
     /* Estilo para el último elemento de cada fila para eliminar el margen derecho */
     .product:nth-child(3n) {
         margin-right: 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #fff;
     }
 }
