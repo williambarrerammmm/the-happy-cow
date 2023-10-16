@@ -14,8 +14,9 @@ body {
 /* Encabezado */
 header {
     background-color: #F4F4F4;
-    background-image: url('../../assets/img/Farm/holstein-cattle.jpg');
+    background-image: url('../../assets/img/Farm/landscapeWithCows.jpeg');
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1); /* Sombra debajo de la barra de navegación */
+    background-size: cover;
 }
 
 .navbar {
@@ -65,7 +66,7 @@ header {
     background-position: center;
     color: #fff;
     text-align: center;
-    padding: 100px 0;
+    padding: 12px 0 180px 0;
 }
 
 .hero h1 {
@@ -106,7 +107,7 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold; /* Texto en negrita en los enlaces */
     transition: color 0.3s ease; /* Transición suave para el color del texto */
 }
@@ -140,7 +141,7 @@ header {
 }
 
 .icon-small:hover {
-    transform: scale(1.5);
+    transform: scale(1.4);
 }
 
 .social-element{
@@ -169,8 +170,13 @@ footer {
 /* Estilos para pantallas más pequeñas (móviles y tablets) */
 @media (max-width: 768px) {
 
+    header{
+        background-position: center;
+    }
+
     .logo{
         margin: auto;
+        width: 100px;
     }
 
     .navbar {
@@ -188,9 +194,17 @@ footer {
         padding-left: 4px;
     }
 
+    #main-menu {
+        display: none;
+    }
+
+    #social-media {
+        display: none;
+    }
+
     /* Ajustar estilos del héroe para dispositivos móviles */
     .hero {
-        padding: 80px 0;
+        padding: 24px 0 204px 0;
     }
 
     .hero h1 {
@@ -259,6 +273,6 @@ footer {
 
     .nav-links a {
         text-decoration: none;
-        color: black;
+        color: white;
     }
 }
