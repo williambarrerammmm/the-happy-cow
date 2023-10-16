@@ -123,6 +123,29 @@ header {
     text-align: center;
 }
 
+.contact-us{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-info span {
+    margin-right: 10px; /* Ajusta el espacio entre el icono y el texto */
+}
+
+
 .social-media{
     display: flex;
     flex-direction: column;
@@ -154,6 +177,7 @@ header {
     margin: 0;
     font-weight: bold;
     font-size: .9rem;
+    margin-bottom: 4px;
 }
 
 /* Pie de página */
@@ -224,6 +248,14 @@ footer {
     /* Ajustar estilos de la sección de contacto para dispositivos móviles */
     #contacto {
         padding: 40px 0;
+    }
+
+    .contact-us{
+        flex-direction: column;
+    }
+
+    footer{
+        font-size: small;
     }
 }
 
