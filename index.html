@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asociación La Vaca Feliz - Lácteos de Calidad</title>
+    <title>La Vaca Feliz - Lácteos de Calidad</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./assets/js/index.js"></script>
 </head>
 <body>
     <header>
@@ -48,32 +53,58 @@
     <section id="productos">
         <div class="container">
             <h2>Nuestros Productos</h2>
-            <div class="product-container">
-                <div class="product">
-                    <img src="./assets/img/Products/pexels-photo-248412.webp" alt="Leche">
-                    <h3>Leche Fresca</h3>
-                    <p>Nuestra leche fresca proviene de vacas felices y es perfecta para tu desayuno.</p>
+            <div>
+                <div class="product-container product-carousel">
+                    <div class="product">
+                        <h3>Queso Artesanal</h3>
+                        <img src="./assets/img/Products/pexels-photo-4187779.jpeg" alt="Queso">
+                        <button type="button" class="btn-comprar" onclick="location.href = 'https://api.whatsapp.com/send?phone=573174341478';">Comprar ahora</button>
+                        <button type="button" class="btn-detalles">Detalles</button>
+                        <div class="product-details">
+                            <h4>Sabor Artesanal, Calidad Inigualable</h4>
+                            
+                        </div>
+                    </div>
+                    <div class="product">
+                        <h3>Arequipe Artesanal</h3>
+                        <img src="./assets/img/Products/Arequipe.jpeg" alt="Arequipe">
+                        <button type="button" class="btn-comprar" onclick="location.href = 'https://api.whatsapp.com/send?phone=573174341478';">Comprar ahora</button>
+                        <button type="button" class="btn-detalles">Detalles</button>
+                        <div class="product-details">
+                            <h4>Dulzura Artesanal en Cada Cucharada</h4>
+                           
+                        </div>
+                    </div>
+                    <div class="product">
+                        <h3>Leche Fresca</h3>
+                        <img src="./assets/img/Products/pexels-photo-248412.webp" alt="Leche">
+                        
+                        <button type="button" class="btn-comprar" onclick="location.href = 'https://api.whatsapp.com/send?phone=573174341478';">Comprar ahora</button>
+                        <button type="button" class="btn-detalles">Detalles</button>
+                        <div class="product-details">
+                            <h4>Descubre la Frescura Pura en Cada Gota</h4>
+                        </div>
+                    </div>
+                    <!-- Agrega más productos aquí -->
                 </div>
-                <div class="product">
-                    <img src="./assets/img/Products/pexels-photo-4187779.jpeg" alt="Queso">
-                    <h3>Queso Artesanal</h3>
-                    <p>El queso artesanal de La Vaca Feliz es conocido por su sabor auténtico y calidad.</p>
-                </div>
-                <div class="product">
-                    <img src="./assets/img/Products/pexels-photo-4187779.jpeg" alt="Arequipe">
-                    <h3>Arequipe Artesanal</h3>
-                    <p>El arequipe artesanal de La Vaca Feliz es conocido por su sabor auténtico y calidad.</p>
-                </div>
-                <!-- Agrega más productos aquí -->
             </div>
+            
         </div>
     </section>
     
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-content"></div>
+            <button type="button" class="btn-comprar btn-comprar-modal">Comprar</button>
+        </div>
+    </div>
 
     <section id="nosotros">
         <div class="container">
-            <h2>Nuestra Historia</h2>
-            <p>Somos una asociación de campesinos dedicada a la producción de lácteos. Nuestras vacas felices son nuestra mayor inspiración.</p>
+            <h2>Nosotros</h2>
+            <p>Somos una asociación de campesinos dedicada a la producción de lácteos.</p>
         </div>
     </section>
 
@@ -128,5 +159,6 @@
             </a>
         </div>
     </footer>
+    
 </body>
 </html>
