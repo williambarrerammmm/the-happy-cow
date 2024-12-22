@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa y Línea de Tiempo de Cultivos</title>
+  <title>Mapa Satelital con Cultivos</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css" />
   <style>
     body {
       margin: 0;
       display: grid;
-      grid-template-rows: auto 1fr;
-      grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
       grid-template-areas:
         "timeline timeline"
+        "map data"
         "map data";
       height: 100vh;
     }
@@ -33,6 +34,7 @@
     #map {
       grid-area: map;
       height: 100%;
+      width: 100%;
     }
 
     #data {
@@ -80,27 +82,28 @@
     // Inicializar el mapa
     const map = L.map('map').setView([0, 0], 2);
 
-    // Agregar capa base
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+    // Agregar capa base de satélite (Esri)
+    const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles © <a href="https://www.esri.com/">Esri</a>'
     }).addTo(map);
 
     // Áreas de cultivo (datos ampliados)
     const cultivos = {
       "2023-01-01": [
-        { name: "Maíz", coordinates: [[10, -10], [10, 10], [-10, 10], [-10, -10]], color: "green" },
-        { name: "Trigo", coordinates: [[20, -20], [20, -10], [10, -10], [10, -20]], color: "yellow" }
+        { name: "Puerro", coordinates: [[4.641840, -74.244542], [4.642383, -74.243816], [4.641976, -74.243748], [4.641479, -74.244534]], color: "green" },
+        { name: "Brocoli", coordinates: [[4.641479, -74.244534], [4.641976, -74.243748], [4.641253, -74.243688], [4.640733, -74.244481]], color: "yellow" }
       ],
       "2023-03-01": [
-        { name: "Soja", coordinates: [[-10, -10], [-10, 0], [-20, 0], [-20, -10]], color: "brown" },
-        { name: "Girasol", coordinates: [[0, -5], [0, 5], [-10, 5], [-10, -5]], color: "orange" }
+        { name: "Puerro", coordinates: [[4.641840, -74.244542], [4.642383, -74.243816], [4.641976, -74.243748], [4.641479, -74.244534]], color: "brown" },
+        { name: "Brocoli", coordinates: [[4.641479, -74.244534], [4.641976, -74.243748], [4.641253, -74.243688], [4.640733, -74.244481]], color: "orange" }
       ],
       "2023-06-01": [
-        { name: "Algodón", coordinates: [[-5, -5], [-5, 5], [-15, 5], [-15, -5]], color: "purple" }
+        { name: "Puerro", coordinates: [[4.641840, -74.244542], [4.642383, -74.243816], [4.641976, -74.243748], [4.641479, -74.244534]], color: "purple" },
+        { name: "Acelga", coordinates: [[4.641479, -74.244534], [4.641976, -74.243748], [4.641253, -74.243688], [4.640733, -74.244481]], color: "yellow" }
       ],
       "2023-09-01": [
-        { name: "Caña de Azúcar", coordinates: [[15, -5], [15, 5], [5, 5], [5, -5]], color: "blue" },
-        { name: "Cebada", coordinates: [[10, -15], [10, -5], [0, -5], [0, -15]], color: "gold" }
+        { name: "Puerro", coordinates: [[4.641840, -74.244542], [4.642383, -74.243816], [4.641976, -74.243748], [4.641479, -74.244534]], color: "blue" },
+        { name: "Acelga", coordinates: [[4.641479, -74.244534], [4.641976, -74.243748], [4.641253, -74.243688], [4.640733, -74.244481]], color: "gold" }
       ]
     };
 
