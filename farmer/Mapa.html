@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa y Línea de Tiempo de Cultivos</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css" />
+  <style>
+    body {
+      margin: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 1fr 2fr;
+      grid-template-areas:
+        "timeline timeline"
+        "map data";
+      height: 100vh;
+    }
+
+    #timeline {
+      grid-area: timeline;
+      padding: 20px;
+      background-color: #f7f7f7;
+      text-align: center;
+    }
+
+    #slider {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    #map {
+      grid-area: map;
+      height: 100%;
+    }
+
+    #data {
+      grid-area: data;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #f9f9f9;
+      border-left: 1px solid #ddd;
+    }
+
+    .info-box {
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      margin-bottom: 10px;
+    }
+
+    .info-box h3 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+
+    .info-box p {
+      margin: 0.5em 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="timeline">
+    <h2>Selecciona una Fecha</h2>
+    <div id="slider"></div>
+  </div>
+  <div id="map"></div>
+  <div id="data">
+    <h2>Información de Cultivos</h2>
+    <div id="info" class="info-box">
+      <h3>Seleccione una fecha en la línea de tiempo</h3>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
+  <script>
+    // Inicializar el mapa
+    const map = L.map('map').setView([0, 0], 2);
+
+    // Agregar capa base
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+    }).addTo(map);
+
+    // Áreas de cultivo (datos ampliados)
+    const cultivos = {
+      "2023-01-01": [
+        { name: "Maíz", coordinates: [[10, -10], [10, 10], [-10, 10], [-10, -10]], color: "green" },
+        { name: "Trigo", coordinates: [[20, -20], [20, -10], [10, -10], [10, -20]], color: "yellow" }
+      ],
+      "2023-03-01": [
+        { name: "Soja", coordinates: [[-10, -10], [-10, 0], [-20, 0], [-20, -10]], color: "brown" },
+        { name: "Girasol", coordinates: [[0, -5], [0, 5], [-10, 5], [-10, -5]], color: "orange" }
+      ],
+      "2023-06-01": [
+        { name: "Algodón", coordinates: [[-5, -5], [-5, 5], [-15, 5], [-15, -5]], color: "purple" }
+      ],
+      "2023-09-01": [
+        { name: "Caña de Azúcar", coordinates: [[15, -5], [15, 5], [5, 5], [5, -5]], color: "blue" },
+        { name: "Cebada", coordinates: [[10, -15], [10, -5], [0, -5], [0, -15]], color: "gold" }
+      ]
+    };
+
+    // Fechas ordenadas
+    const fechas = Object.keys(cultivos);
+
+    // Contenedor para capas de cultivo
+    let activeLayers = [];
+
+    // Función para mostrar áreas de cultivo
+    function showCultivosForDate(date) {
+      // Limpiar capas anteriores
+      activeLayers.forEach(layer => map.removeLayer(layer));
+      activeLayers = [];
+
+      // Agregar nuevas áreas
+      if (cultivos[date]) {
+        const infoDiv = document.getElementById("info");
+        infoDiv.innerHTML = ""; // Limpiar información anterior
+
+        cultivos[date].forEach(cultivo => {
+          const layer = L.polygon(cultivo.coordinates, {
+            color: cultivo.color,
+            fillOpacity: 0.5
+          }).addTo(map);
+
+          activeLayers.push(layer);
+
+          // Actualizar información
+          infoDiv.innerHTML += `
+            <div class="info-box">
+              <h3>${cultivo.name}</h3>
+              <p>Color: ${cultivo.color}</p>
+            </div>
+          `;
+        });
+
+        // Ajustar el mapa
+        map.fitBounds(L.featureGroup(activeLayers).getBounds());
+      } else {
+        document.getElementById("info").innerHTML = `
+          <div class="info-box">
+            <h3>No hay cultivos en esta fecha</h3>
+          </div>
+        `;
+      }
+    }
+
+    // Inicializar línea de tiempo
+    const slider = document.getElementById("slider");
+    noUiSlider.create(slider, {
+      start: [0],
+      range: {
+        min: 0,
+        max: fechas.length - 1
+      },
+      step: 1,
+      tooltips: true,
+      format: {
+        to: value => fechas[Math.round(value)],
+        from: value => fechas.indexOf(value)
+      }
+    });
+
+    // Evento al cambiar la línea de tiempo
+    slider.noUiSlider.on('update', values => {
+      const selectedDate = values[0];
+      showCultivosForDate(selectedDate);
+    });
+
+    // Mostrar cultivos iniciales
+    showCultivosForDate(fechas[0]);
+  </script>
+</body>
+</html>
