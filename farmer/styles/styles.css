@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "timeline timeline"
+      "map data"
+      "map data";
+    height: 100vh;
+  }
+  
+  #timeline {
+    grid-area: timeline;
+    padding: 20px;
+    background: linear-gradient(to right, #6a11cb, lime); /* Degradado moderno */
+    color: white; /* Texto claro para contraste */
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #timeline h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para destacar texto */
+  }
+  
+  #slider {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .noUi-tooltip {
+    background-color: black; /* Naranja brillante */
+    color: #fff;
+    font-size: 0.9em;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+  }
+  
+  .noUi-handle {
+    background-color: #2575fc;
+    border: 2px solid #2575fc;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .noUi-connect {
+    background-color: #2575fc;
+    opacity: 0.9;
+  }
+  
+  .noUi-horizontal .noUi-handle {
+    top: -7px;
+  }
+  
+  .noUi-horizontal {
+    height: 10px;
+  }
+  
+  .noUi-base {
+    background: rgba(255, 255, 255, 0.5); /* Fondo translúcido */
+    border-radius: 5px;
+  }
+  
+  
+  #map {
+    grid-area: map;
+    height: 100%;
+    width: 100%;
+  }
+  
+  #data {
+    grid-area: data;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+  }
+  
+  .info-box {
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+  }
+  
+  .info-box h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .info-box p {
+    margin: 0.5em 0 0;
+  }
+  
