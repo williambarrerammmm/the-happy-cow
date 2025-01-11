@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mapa Satelital con Cultivos</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.13.0/dist/leaflet-geoman.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css" />
   <link rel="stylesheet" href="./styles/styles.css" />
 </head>
@@ -20,8 +21,29 @@
       <h3>Seleccione una fecha en la línea de tiempo</h3>
     </div>
   </div>
+   <!-- Modal para ingresar información del cultivo -->
+   <div class="modal" id="cultivoModal">
+    <h2>Información del Cultivo</h2>
+    <form id="cultivoForm">
+      <label for="cultivoName">Nombre del Cultivo:</label>
+      <input type="text" id="cultivoName" required />
+      <br />
+      <label for="cultivoColor">Color (CSS):</label>
+      <input type="color" id="cultivoColor" value="#ffa500" required />
+      <br />
+      <label for="cultivoDescription">Descripción:</label>
+      <textarea id="cultivoDescription" rows="3"></textarea>
+      <br />
+      <label for="cultivoDate">Fecha:</label>
+      <input type="date" id="cultivoDate" required />
+      <br />
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+  <div class="overlay" id="overlay"></div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.13.0/dist/leaflet-geoman.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
   <script src="./js/scripts.js"></script>
 </body>
