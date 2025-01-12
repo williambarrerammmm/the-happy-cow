@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_c447916068a140de99c650bd8c60b23d }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_3a8eb796399f44d181bc5af719697f76 }}
+        registry: https://artifact.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_75864a73483c44dd8c00ea2efb8e45d0 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_87f1882f4d6e4cbeafb67d6834ba826e }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_c447916068a140de99c650bd8c60b23d }}/appsvc/staticsite:${{ github.sha }}
+        tags: artifact.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_75864a73483c44dd8c00ea2efb8e45d0 }}/samples/hello-world:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'farmer'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_62b85f0e52f243cb9f0fbadef5930eaf }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_c447916068a140de99c650bd8c60b23d }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_90118a1819204d05be8b8259f1031c6e }}
+        images: 'artifact.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_75864a73483c44dd8c00ea2efb8e45d0 }}/samples/hello-world:${{ github.sha }}'
